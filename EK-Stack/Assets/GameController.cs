@@ -105,16 +105,22 @@ public class GameController : MonoBehaviour
             return;
         }
         //Variable time equals to the time scine game startup
-        var time = Mathf.Abs(Time.realtimeSinceStartup % 2f -1f);
+        var time = Mathf.Abs(Time.realtimeSinceStartup % 2f - 1f);
         //Variable pos1 equals last cube position
         var pos1 = lastCube.transform.position + Vector3.up * 10f;
         //Variable pos2 equals to the pos1 plus any level by number of 2
-        var pos2 = pos1 + ((Level % 2 == 0) ? Vector3.left : Vector3.forward)* 120;
+        var pos2 = pos1 + ((Level % 2 == 0) ? Vector3.left : Vector3.forward) * 120;
         //If the level is by the number of two
         if(Level % 2 == 0)
         {
             //Current position of the current cube based of the 3 axis of
             //pos 2, pos1, and time
+            currentCube.transform.position = Vector3.Lerp(pos2, pos1, time);
+        }
+        else
+        {
+            //Current position of the current cube based on the 3 axis of
+            //pos2, pos1, and time
             currentCube.transform.position = Vector3.Lerp(pos1, pos2, time);
         }
         //If the left mouse button is clicked
