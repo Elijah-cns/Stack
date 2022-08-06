@@ -109,7 +109,8 @@ public class GameController : MonoBehaviour
         //Variable pos1 equals last cube position
         var pos1 = lastCube.transform.position + Vector3.up * 10f;
         //Variable pos2 equals to the pos1 plus any level by number of 2
-        var pos2 = pos1 + ((Level % 2 == 0) ? Vector3.left : Vector3.forward) * 120;
+        var pos2 = pos1 + ((Level % 2 == 0) ? Vector3.left : Vector3.forward) * 200;
+        
         //If the level is by the number of two
         if(Level % 2 == 0)
         {
@@ -130,6 +131,11 @@ public class GameController : MonoBehaviour
             //its called
             Newblock();
         }
+        //Text is visible
+        text.gameObject.SetActive(true);
+        //Text equals to the text of the Final score
+        //and which level is played
+        text.text = "Final Score: " + Level;
     }
         //IEnumerator X function
         IEnumerator X()
